@@ -72,7 +72,7 @@
     <!--JS-->
     <script>
         const display = document.getElementById('Clock');
-        const audio = new Audio('caTTT.mp3');
+        const audio = new Audio('mixkit-alarm-tone-996.wav');
         audio.loop = true;
         let alarmTime = null;
         let alarmTimeout = null;
@@ -92,18 +92,20 @@
             console.log(alarmTime);
         }
     
-        function setAlarm() {
-            if (alarmTime) {
-                let current = new Date();
-                let timeToAlarm = new Date(alarmTime);
-    
-                if (timeToAlarm > current) {
-                    let timeout = timeToAlarm.getTime() - current.getTime();
-                    alarmTimeout = setTimeout(() => audio.play(), timeout);
-                    alert('Alert set');
-                }
-            }
+       function setAlarm() {
+    if (alarmTime) {
+        let current = new Date();
+        let timeToAlarm = new Date(alarmTime);
+
+        if (timeToAlarm > current) {
+            let timeout = timeToAlarm.getTime() - current.getTime();
+            alarmTimeout = setTimeout(() => {
+                audio.play(); // Play audio
+                alert('Alert set');
+            }, timeout);
         }
+    }
+}
     
         function clearAlarm() {
             audio.pause();
